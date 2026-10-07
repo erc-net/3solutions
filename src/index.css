@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+:root {
+  --nav-bg:#0B1B3D;
+  --brand-primary:#E11D48;
+  --brand-secondary:#F43F5E;
+}
+
+body{
+  font-family: 'inter', sans-serif;
+}
+
+.font-fancy {
+  font-family: 'Orbitron', sans-serif;
+}
+ @keyframes shine {
+  100%{
+    left: 125%;
+  }
+ }
+
+ /* --- Industry Showcase Section --- */
+.industry-section {
+  padding: 5rem 1rem;
+  /* Changed to transparent so it inherits the #03060D background and animations from Home */
+  background-color: transparent; 
+  color: #f8fafc;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.industry-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.industry-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  /* Updated gradient to match the vibrant theme of your hero section */
+  background: linear-gradient(to right, #06b6d4, #3b82f6); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.industry-subtitle {
+  font-size: 1.125rem;
+  color: #9ca3af; /* Gray-400 to match your hero text */
+}
+
+/* The wrapper that hides the overflow and adds a fade to the edges */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  /* Creates a fade-out effect on the left and right edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* The track that actually animates */
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 35s linear infinite; /* Slightly slower for readability */
+  padding: 1rem 0;
+}
+
+/* Pause the animation when the user is hovering over the cards */
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Individual Cards - Updated to match your glass/holographic theme */
+.industry-card {
+  flex: 0 0 auto;
+  width: 280px;
+  margin: 0 1rem;
+  padding: 2rem 1.5rem;
+  /* Glassmorphism effect to match the top section */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.industry-card:hover {
+  transform: translateY(-10px);
+  /* Subtle cyan glow on hover */
+  background: rgba(6, 182, 212, 0.1); 
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.3);
+}
+
+.industry-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.industry-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.industry-desc {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.industry-card:hover .industry-desc {
+  color: #e5e7eb;
+}
+
+/* Keyframe Animation */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Scrolls exactly half the width of the track */
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1024px) {
+  .industry-title {
+    font-size: 2rem;
+  }
+  .industry-card {
+    width: 250px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+  .industry-card {
+    width: 220px;
+    margin: 0 0.75rem;
+  }
+  .industry-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .industry-section {
+    padding: 3rem 0.5rem;
+  }
+  .industry-title {
+    font-size: 1.75rem;
+  }
+  .industry-card {
+    width: 200px;
+    margin: 0 0.5rem;
+    padding: 1.25rem 1rem;
+  }
+}
