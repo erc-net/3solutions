@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
-import nameImg from '../assets/Name.png';
+import nameImg from '../assets/Name.jpeg';
 
 const metrics = [
   { value: '2023', label: 'Founded in Bulawayo', subtext: 'Established as an enterprise tech firm' },

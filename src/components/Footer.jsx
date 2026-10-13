@@ -83,20 +83,6 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 tracking-wider uppercase text-sm">Tech Insights</h4>
             <p className="text-gray-400 text-sm mb-4">Subscribe to our developer newsletter for architecture patterns and tech news.</p>
             
-            {/* Techy Input Field */}
-            <form className="relative flex items-center mb-8">
-              <input 
-                type="email" 
-                placeholder="developer@company.com" 
-                className="w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all font-mono"
-              />
-              <button 
-                type="submit" 
-                className="absolute right-2 px-3 py-1.5 bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-bold rounded-md transition-colors"
-              >
-                INIT
-              </button>
-            </form>
 
             {/* Social Icons */}
             <div className="flex gap-4">

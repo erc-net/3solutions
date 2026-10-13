@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CarSale() {
-  const whatsappNumber = '263777799316'; // Replace with your target WhatsApp phone number
+  const whatsappNumber = '+263790292355'; // Replace with your target WhatsApp phone number
 
   // Sample Car Gallery Data
   // In a real application, this data would likely come from an API or database
