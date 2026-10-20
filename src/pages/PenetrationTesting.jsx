@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   ShieldAlert, Terminal, Cpu, Zap, Eye, Globe, ArrowRight, 
-  CheckCircle2, FileText, ChevronDown, Award, AlertTriangle, 
-  Layers, Lock, Crosshair, HelpCircle, ShieldCheck
+  CheckCircle2, FileText, ChevronDown, Award,
+  ShieldCheck, Sliders, Target
 } from 'lucide-react';
 
 export default function PenetrationTesting() {
-  // Interactive Calculator State
+  // Interactive Scope & Target Configurator State
   const [assetType, setAssetType] = useState('web');
   const [assetCount, setAssetCount] = useState(1);
   const [complianceNeeded, setComplianceNeeded] = useState(false);
@@ -92,13 +92,16 @@ export default function PenetrationTesting() {
     }
   ];
 
-  // Dynamic estimate calculator logic
-  const calculateEstimate = () => {
-    let base = assetType === 'web' ? 2500 : assetType === 'cloud' ? 3500 : 2000;
-    let multiplier = assetCount * 800;
-    let complianceFee = complianceNeeded ? 1200 : 0;
-    return base + multiplier + complianceFee;
+  // Logic calculating depth, duration, and threat profile instead of price
+  const getAssessmentMetrics = () => {
+    let complexity = assetCount > 6 ? 'High Complexity' : assetCount > 3 ? 'Medium Complexity' : 'Standard Scope';
+    let duration = `${Math.ceil(assetCount * 1.5) + (complianceNeeded ? 2 : 0)} - ${Math.ceil(assetCount * 2.5) + (complianceNeeded ? 3 : 0)} Days`;
+    let methodology = assetType === 'cloud' ? 'Grey-Box & IAM Escalation' : assetType === 'web' ? 'Grey-Box & OWASP Top 10' : 'Black-Box & Perimeter Scanning';
+
+    return { complexity, duration, methodology };
   };
+
+  const metrics = getAssessmentMetrics();
 
   return (
     <section className="relative min-h-screen bg-[#03060D] text-white pt-32 pb-24 overflow-hidden font-mono">
@@ -203,11 +206,14 @@ export default function PenetrationTesting() {
           </div>
         </div>
 
-        {/* Scope & Cost Estimator Tool */}
+        {/* Attack Surface & Scope Configurator */}
         <div className="mt-28 bg-[#050914] border border-cyan-500/30 rounded-2xl p-8 sm:p-12 relative">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-white uppercase tracking-wide">Interactive Project Estimator</h2>
-            <p className="mt-2 text-sm text-gray-400 font-sans">Select your targets to generate a preliminary engagement estimate.</p>
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">
+              <Sliders className="w-4 h-4" /> Scope Assessment Tool
+            </div>
+            <h2 className="text-2xl font-bold text-white uppercase tracking-wide">Attack Surface Scope Configurator</h2>
+            <p className="mt-2 text-sm text-gray-400 font-sans">Select target variables to calculate testing parameters and estimated execution timelines.</p>
           </div>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -228,7 +234,7 @@ export default function PenetrationTesting() {
             {/* Asset Count Slider */}
             <div>
               <label className="block text-xs uppercase text-gray-400 font-bold mb-3">
-                Estimated Scope Size: <span className="text-cyan-400 font-bold">{assetCount} Asset(s)</span>
+                Estimated Scope Size: <span className="text-cyan-400 font-bold">{assetCount} Asset(s) / Subnets</span>
               </label>
               <input 
                 type="range" 
@@ -242,7 +248,7 @@ export default function PenetrationTesting() {
 
             {/* Compliance Toggle */}
             <div className="flex flex-col">
-              <label className="block text-xs uppercase text-gray-400 font-bold mb-3">Compliance Requirements</label>
+              <label className="block text-xs uppercase text-gray-400 font-bold mb-3">Compliance Standard</label>
               <button 
                 onClick={() => setComplianceNeeded(!complianceNeeded)}
                 className={`w-full py-3 px-4 rounded-lg border font-sans text-xs font-bold transition-all ${
@@ -251,20 +257,26 @@ export default function PenetrationTesting() {
                     : 'bg-[#0a1020] border-gray-800 text-gray-400'
                 }`}
               >
-                {complianceNeeded ? '✓ PCI/SOC2 Attestation Included' : '+ Add Attestation Report'}
+                {complianceNeeded ? '✓ Regulatory Audit Attestation Included' : '+ Require Regulatory Attestation'}
               </button>
             </div>
           </div>
 
-          {/* Price Preview Footer */}
-          <div className="mt-10 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          {/* Scope Parameters Summary Footer */}
+          <div className="mt-10 pt-6 border-t border-gray-800 grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
             <div>
-              <span className="text-xs uppercase text-gray-400 block font-sans">Estimated Assessment Budget</span>
-              <span className="text-3xl font-black text-cyan-400">${calculateEstimate().toLocaleString()} USD</span>
+              <span className="text-xs uppercase text-gray-400 block font-sans">Testing Depth & Methodology</span>
+              <span className="text-sm font-bold text-cyan-300">{metrics.methodology}</span>
             </div>
-            <Link to="/contact" className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-bold text-xs uppercase tracking-wider hover:bg-cyan-300 transition-all">
-              Lock In Scope Quote
-            </Link>
+            <div>
+              <span className="text-xs uppercase text-gray-400 block font-sans">Estimated Audit Duration</span>
+              <span className="text-sm font-bold text-cyan-300">{metrics.duration}</span>
+            </div>
+            <div className="sm:text-right">
+              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 text-black font-bold text-xs uppercase tracking-wider hover:bg-cyan-300 transition-all">
+                <Target className="w-4 h-4" /> Request Scope Audit Proposal
+              </Link>
+            </div>
           </div>
         </div>
 

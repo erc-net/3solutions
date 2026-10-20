@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import nameLogo from '../assets/Name.jpeg';
 
 export default function Footer() {
   return (
@@ -21,10 +22,14 @@ export default function Footer() {
           
           {/* Column 1: Brand & Bio */}
           <div className="col-span-1 lg:col-span-1">
-            <h2 className="text-3xl font-black text-white tracking-tight mb-4 flex items-center gap-2">
-              <span className="text-cyan-400">3</span>Solutions
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse mt-2"></span>
-            </h2>
+            <div className="mb-4 flex items-center gap-2">
+              <img 
+                src={nameLogo} 
+                alt="Company Name" 
+                className="h-10 w-auto object-contain"
+              />
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Architecting the digital future. We engineer scalable, secure, and high-performance digital ecosystems designed to dominate your market.
             </p>
