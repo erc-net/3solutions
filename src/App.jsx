@@ -9,7 +9,7 @@ import PenetrationTesting from './pages/PenetrationTesting';
 import CloudSolutions from './pages/CloudSolutions';
 import ITsupport from './pages/ITsupport';
 import ArchitecturalSolutions from './pages/ArchitecturalSolutions';
-import CarSale from './pages/CarSale';
+import ItConsultation from './pages/ItConsultation';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 
@@ -28,7 +28,7 @@ function App() {
           <Route path="/cloud-solutions" element={<CloudSolutions />} />
           <Route path="/it-support" element={<ITsupport />} />
           <Route path="/architectural-solutions" element={<ArchitecturalSolutions />} />
-          <Route path="/car-sale" element={<CarSale />} />
+          <Route path="/it-consultation" element={<ItConsultation />} />
           <Route path="/careers" element={<Careers />} />
         </Routes>
       </main>

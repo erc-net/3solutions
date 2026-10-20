@@ -16,7 +16,7 @@ const navLinks = [
     ]
   },
   { title: 'Architectural Solutions', to: '/architectural-solutions' },
-  { title: 'Car Sale', to: '/car-sale' },
+  { title: 'IT Consultation', to: '/it-consultation' },
   { title: 'Careers', to: '/careers' },
   { title: 'About', to: '/about' },
 ];
@@ -47,7 +47,7 @@ export default function Navbar() {
   };
 
   const linkClass = ({ isActive }) =>
-    `relative px-3 lg:px-4 py-2 text-sm xl:text-base font-semibold transition-all duration-300 group flex items-center ${
+    `relative px-2 xl:px-3 py-1.5 text-xs xl:text-sm font-semibold transition-all duration-300 group flex items-center whitespace-nowrap ${
       isActive ? 'text-[var(--brand-primary,#00f2fe)] font-bold' : 'text-gray-700 hover:text-black'
     }`;
 
@@ -55,8 +55,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-md py-2 shadow-lg shadow-gray-200/50 border-b border-gray-200/60' 
-          : 'bg-white py-4 border-b border-gray-100 shadow-sm'
+          ? 'bg-white/90 backdrop-blur-md py-1.5 shadow-md shadow-gray-200/50 border-b border-gray-200/60' 
+          : 'bg-white py-3 border-b border-gray-100 shadow-sm'
       }`}
     >
       {/* Glow highlight line on scroll */}
@@ -66,40 +66,40 @@ export default function Navbar() {
         }`}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 md:h-16 items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex h-12 md:h-14 items-center justify-between gap-2 xl:gap-4">
           
           {/* LOGO SECTION */}
           <Link 
             to="/" 
             onClick={closeMenus} 
             aria-label="Home" 
-            className="flex items-center gap-2 group transition-transform duration-300 hover:scale-[1.02] shrink-0"
+            className="flex items-center gap-1.5 sm:gap-2 group transition-transform duration-300 hover:scale-[1.01] shrink-0"
           >
             <img 
               src={logo}
               alt="Company Logo" 
-              className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-all" 
+              className="h-8 sm:h-10 md:h-11 w-auto object-contain transition-all" 
             />
             <img
               src={name}
               alt="Company Motto"
-              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-all"
+              className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-all"
             />
           </Link>
 
           {/* DESKTOP NAVIGATION (Visible on xl/lg screens) */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
             {navLinks.map((link) =>
               link.subLinks ? (
                 <div key={link.title} className="relative group">
                   <button
                     type="button"
-                    className="px-3 lg:px-4 py-2 text-sm xl:text-base font-semibold text-gray-700 hover:text-black flex items-center gap-1 transition-colors group-hover:text-[var(--brand-primary,#00f2fe)]"
+                    className="px-2 xl:px-3 py-1.5 text-xs xl:text-sm font-semibold text-gray-700 hover:text-black flex items-center gap-1 transition-colors group-hover:text-[var(--brand-primary,#00f2fe)] whitespace-nowrap"
                   >
                     <span>{link.title}</span>
                     <svg 
-                      className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-gray-500 group-hover:text-[var(--brand-primary,#00f2fe)]" 
+                      className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 text-gray-500 group-hover:text-[var(--brand-primary,#00f2fe)]" 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -109,8 +109,8 @@ export default function Navbar() {
                   </button>
 
                   {/* Tech Dropdown Menu */}
-                  <div className="absolute left-0 top-full pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 w-64">
-                    <div className="rounded-2xl border border-gray-100 bg-white/95 backdrop-blur-xl p-2 shadow-2xl shadow-gray-900/10 ring-1 ring-black/5 overflow-hidden">
+                  <div className="absolute left-0 top-full pt-1.5 opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 w-56">
+                    <div className="rounded-xl border border-gray-100 bg-white/95 backdrop-blur-xl p-1.5 shadow-xl shadow-gray-900/10 ring-1 ring-black/5 overflow-hidden">
                       {/* Top tech subtle accent line */}
                       <div className="h-0.5 w-full bg-gradient-to-r from-cyan-400 to-blue-500 mb-1 rounded-full" />
                       
@@ -119,7 +119,7 @@ export default function Navbar() {
                           key={sub.to}
                           to={sub.to}
                           className={({ isActive }) =>
-                            `group/item flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                            `group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-200 ${
                               isActive
                                 ? 'bg-cyan-50 text-[var(--brand-primary,#00f2fe)] font-bold'
                                 : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
@@ -155,13 +155,13 @@ export default function Navbar() {
             {/* Glowing CTA Button */}
             <NavLink
               to="/contact"
-              className="relative ml-3 group overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-cyan-500/20 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/40 hover:scale-105 active:scale-95"
+              className="relative ml-2 group overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 px-4 xl:px-5 py-2 text-xs xl:text-sm font-bold text-white shadow-sm shadow-cyan-500/20 transition-all duration-300 hover:shadow-md hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 shrink-0"
             >
               {/* Shine effect animation */}
               <span className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000 ease-out" />
-              <span className="relative z-10 flex items-center gap-1.5">
+              <span className="relative z-10 flex items-center gap-1">
                 <span>Contact Us</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
               </span>
             </NavLink>
           </div>
@@ -169,40 +169,40 @@ export default function Navbar() {
           {/* MOBILE TOGGLE HAMBURGER BUTTON */}
           <button
             type="button"
-            className="lg:hidden relative p-2.5 rounded-xl text-gray-700 hover:bg-gray-100 active:scale-95 transition-all focus:outline-none"
+            className="lg:hidden relative p-2 rounded-lg text-gray-700 hover:bg-gray-100 active:scale-95 transition-all focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
           >
-            <div className="w-6 h-5 flex flex-col justify-between items-center relative">
-              <span className={`w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-left ${isOpen ? 'rotate-45 translate-x-1 -translate-y-0.5' : ''}`} />
-              <span className={`w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : 'opacity-100'}`} />
-              <span className={`w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-left ${isOpen ? '-rotate-45 translate-x-1 translate-y-0.5' : ''}`} />
+            <div className="w-5 h-4 flex flex-col justify-between items-center relative">
+              <span className={`w-5 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-left ${isOpen ? 'rotate-45 translate-x-0.5 -translate-y-0.5' : ''}`} />
+              <span className={`w-5 h-0.5 bg-gray-800 rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : 'opacity-100'}`} />
+              <span className={`w-5 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-left ${isOpen ? '-rotate-45 translate-x-0.5 translate-y-0.5' : ''}`} />
             </div>
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU DRAWER (Smooth animated reveal) */}
+      {/* MOBILE MENU DRAWER */}
       <div 
-        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out border-t border-gray-100 bg-white/95 backdrop-blur-xl ${
-          isOpen ? 'max-h-[85vh] opacity-100 shadow-2xl' : 'max-h-0 opacity-0 pointer-events-none'
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-gray-100 bg-white/95 backdrop-blur-xl ${
+          isOpen ? 'max-h-[85vh] opacity-100 shadow-xl' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="px-4 pt-3 pb-6 space-y-2 max-h-[80vh] overflow-y-auto">
+        <div className="px-3 pt-2 pb-5 space-y-1.5 max-h-[80vh] overflow-y-auto">
           {navLinks.map((link) =>
             link.subLinks ? (
-              <div key={link.title} className="rounded-xl border border-gray-100/80 bg-gray-50/50 overflow-hidden">
+              <div key={link.title} className="rounded-lg border border-gray-100/80 bg-gray-50/50 overflow-hidden">
                 <button
                   type="button"
                   onClick={() => setServicesOpen(!servicesOpen)}
-                  className="w-full px-4 py-3 text-left font-bold text-gray-800 flex items-center justify-between transition-colors hover:bg-gray-100/60"
+                  className="w-full px-3.5 py-2.5 text-left text-xs font-bold text-gray-800 flex items-center justify-between transition-colors hover:bg-gray-100/60"
                 >
                   <span className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                     {link.title}
                   </span>
                   <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180 text-cyan-500' : 'text-gray-400'}`}
+                    className={`w-3.5 h-3.5 transition-transform duration-300 ${servicesOpen ? 'rotate-180 text-cyan-500' : 'text-gray-400'}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -214,7 +214,7 @@ export default function Navbar() {
                 {/* Sublinks Accordion */}
                 <div 
                   className={`transition-all duration-300 ease-in-out overflow-hidden bg-white/80 ${
-                    servicesOpen ? 'max-h-96 border-t border-gray-100 p-2' : 'max-h-0'
+                    servicesOpen ? 'max-h-80 border-t border-gray-100 p-1.5' : 'max-h-0'
                   }`}
                 >
                   {link.subLinks.map((sub) => (
@@ -223,7 +223,7 @@ export default function Navbar() {
                       to={sub.to}
                       onClick={closeMenus}
                       className={({ isActive }) =>
-                        `block px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                        `block px-3 py-2 rounded-md text-xs font-semibold transition-all ${
                           isActive 
                             ? 'bg-cyan-50 text-[var(--brand-primary,#00f2fe)] font-bold' 
                             : 'text-gray-600 hover:bg-gray-50 hover:text-black'
@@ -241,7 +241,7 @@ export default function Navbar() {
                 to={link.to}
                 onClick={closeMenus}
                 className={({ isActive }) =>
-                  `block px-4 py-3 rounded-xl font-bold transition-all ${
+                  `block px-3.5 py-2.5 rounded-lg text-xs font-bold transition-all ${
                     isActive 
                       ? 'bg-gradient-to-r from-cyan-500/10 to-blue-500/10 text-[var(--brand-primary,#00f2fe)] border-l-4 border-cyan-500' 
                       : 'text-gray-800 hover:bg-gray-50'
@@ -257,7 +257,7 @@ export default function Navbar() {
           <NavLink
             to="/contact"
             onClick={closeMenus}
-            className="mt-4 block w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 px-4 py-3.5 text-center font-bold text-white shadow-lg shadow-cyan-500/20 active:scale-[0.98] transition-all"
+            className="mt-3 block w-full rounded-lg bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 px-3.5 py-2.5 text-center text-xs font-bold text-white shadow-md shadow-cyan-500/20 active:scale-[0.98] transition-all"
           >
             Contact Us
           </NavLink>
